@@ -1,16 +1,32 @@
-# This is a sample Python script.
+from person import Person
+from account import Account, YoungAccount
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    "Ejercicio 6"
+    # person1 = Person()
+    # person1.name = 'Abel'
+    # person1.age = 23
+    # person1.dni = 41862171
+    # person1.show()
+
+    "Ejercicio 7"
+    # account = Account('Abel', 23, 41862171)
+    # print(account.holder)
+    # account.holder = Person('Mauricio', 23, 41862171)
+    # account.show()
+    # account.deposit(12)
+    # account.show()
+    # account.extract(0.5)
+    # account.show()
+
+    "Ejercicio 8"
+    young_account = YoungAccount('Abel', 23, 41862171, 10)
+    print(young_account.is_valid())
+    young_account.deposit(40)
+    young_account.extract(12)
+    young_account.show()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
