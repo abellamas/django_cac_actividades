@@ -20,10 +20,10 @@ class Person:
     is_adult()
         Return and boolean if the person is greater than 18 years old
     """
-    def __init__(self):
-        self.__name = None
-        self.__age = None
-        self.__dni = None
+    def __init__(self, name:str = None, age:int = None, dni:int = None):
+        self.__name = name
+        self.__age = age
+        self.__dni = dni
 
     @property
     def name(self):
