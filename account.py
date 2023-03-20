@@ -9,7 +9,7 @@ class Account():
         Attributes
         ----------
         holder : Person
-            the holder is a Person object with the name, age and dni. This is required attribute
+            the holder is an instance of a Person class, this is required.
 
         Methods
         -------
@@ -22,17 +22,17 @@ class Account():
     """
 
     def __init__(self, name: str, age: int, dni: int):
-        self.__holder = Person(name, age, dni)
+        self._holder = Person(name, age, dni)
         self.__amount = 0.0
 
     @property
     def holder(self):
-        return f'Holder data\n name\t age\t dni\t \n {self.__holder.name}\t {self.__holder.age}\t {self.__holder.dni}'
+        return f'Holder data\n name\t age\t dni\t \n {self._holder.name}\t {self._holder.age}\t {self._holder.dni}'
 
     @holder.setter
     def holder(self, person):
         if type(person) == Person:
-            self.__holder = person
+            self._holder = person
         else:
             raise TypeError('the holder must be a person object')
 
@@ -54,4 +54,55 @@ class Account():
 
     def show(self):
         print(f'Account data\n name\t age\t dni\t amount\n'
-              f'{self.__holder.name}\t {self.__holder.age}\t {self.__holder.dni}\t {self.__amount}')
+              f'{self._holder.name}\t {self._holder.age}\t {self._holder.dni}\t {self.__amount}')
+
+
+class YoungAccount(Account):
+    """
+        A new class of account, called Young Account to holders between 18 and 25 years old.
+
+        Attributes
+        ----------
+        holder : Person(name, age, dni)
+            the holder is an instance of a Person class, this is required.
+
+        Methods
+        -------
+        deposit(amount:float or int)
+            allow deposit money in the bank account, if the amount is negative the deposit nothing is done
+
+        is_valid()
+            if the holder have between 18 and 25 return True.
+
+        extract(amount:float or int)
+            allow extract money of the bank account if the user is valid, the amount required must be less than
+            the amount available in the account.
+
+    """
+    def __init__(self, name, age, dni, bonus):
+        super().__init__(name, age, dni)
+        self.__bonus = bonus
+
+    @property
+    def bonus(self):
+        return self.__bonus
+
+    @bonus.setter
+    def bonus(self, bonus):
+        self.__bonus = bonus
+
+    def is_valid(self):
+
+        # print(self._holder.age)
+        return True if 18 < self._holder.age < 25 else False
+
+    def extract(self, amount):
+        if self.is_valid() == True:
+            super().extract(amount)
+        else:
+            print('No se puede extraer')
+
+    def show(self):
+        print(f'Young account, {self.bonus} % bonus')
+        super().show()
+
